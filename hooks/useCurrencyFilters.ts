@@ -6,6 +6,15 @@ const useCurrencyFilters = (currencies: Currency[]) => {
 
   const [filteredCurrencies, setFilteredCurrencies] = useState<Currency[]>([]);
 
+  useEffect(() => {
+    // Get only currencies that match the current filters
+    const filtered = currencies.filter((currency) =>
+      filters.every((f) => currency[f])
+    );
+
+    setFilteredCurrencies(filtered);
+  }, [currencies, filters]);
+
   const onFiltersChange = (filter: Filter, checked: boolean) => {
     if (checked) {
       setFilters([...filters, filter]);
@@ -13,14 +22,6 @@ const useCurrencyFilters = (currencies: Currency[]) => {
       setFilters(filters.filter((f) => f !== filter));
     }
   };
-
-  useEffect(() => {
-    const filtered = currencies.filter(
-      (currency) => !filters.some((filter) => !currency[filter])
-    );
-
-    setFilteredCurrencies(filtered);
-  }, [currencies, filters]);
 
   return { filteredCurrencies, onFiltersChange };
 };
