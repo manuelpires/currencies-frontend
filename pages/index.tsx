@@ -28,26 +28,26 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         </h1>
 
         {/* FILTERS & SORTING */}
-        <div className="flex flex-col items-start gap-8">
+        <div className="flex flex-col items-center gap-8">
           <Toggle
-            label="Hide currencies not supported in the US"
+            label="Hide not supported in the US"
             onChange={(checked) =>
               onFiltersChange(Filter.HIDE_NOT_SUPPORTED_IN_US, checked)
             }
           />
 
           <Toggle
-            label="Hide currencies not available in Test Mode"
+            label="Hide not available in Test Mode"
             onChange={(checked) =>
               onFiltersChange(Filter.HIDE_NOT_SUPPORTED_TEST_MODE, checked)
             }
           />
 
           <div
-            className="inline-flex content-start gap-3 items-center rounded-md shadow-sm"
+            className="inline-flex content-center gap-3 items-center rounded-md shadow-sm"
             role="group"
           >
-            <span className="text-xs md:text-sm text-slate-300">Sort:</span>
+            <span className="text-md text-slate-300">Sort:</span>
 
             <Button onClick={() => onSortChange(Sort.CODE)}>Symbol</Button>
             <Button onClick={() => onSortChange(Sort.NAME)}>Name</Button>

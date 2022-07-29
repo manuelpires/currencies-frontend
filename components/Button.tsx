@@ -6,7 +6,7 @@ interface Props extends PropsWithChildren {
 
 const Button: FC<Props> = ({ onClick, children }) => (
   <button
-    className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full text-sm md:text-md"
+    className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-3 rounded-full text-sm"
     onClick={onClick}
   >
     {children}
