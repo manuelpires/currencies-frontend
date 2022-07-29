@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Filter } from "../constants";
 
-const useCurrencyFilters = (currencies: Currency[]) => {
-  const [filters, setFilters] = useState<Filter[]>([]);
+const useCurrencyFilters = (currencies: Currency[], initialValue = []) => {
+  const [filters, setFilters] = useState<Filter[]>(initialValue);
 
   const [filteredCurrencies, setFilteredCurrencies] = useState<Currency[]>([]);
 
@@ -17,9 +17,9 @@ const useCurrencyFilters = (currencies: Currency[]) => {
 
   const onFiltersChange = (filter: Filter, checked: boolean) => {
     if (checked) {
-      setFilters([...filters, filter]);
+      setFilters([...filters, filter]); // add the filter
     } else {
-      setFilters(filters.filter((f) => f !== filter));
+      setFilters(filters.filter((f) => f !== filter)); // remove the filter
     }
   };
 

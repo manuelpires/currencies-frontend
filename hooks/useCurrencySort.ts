@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { Sort } from "../constants";
 
-const useCurrencySort = (currencies: Currency[]) => {
-  const [sortBy, setSortBy] = useState<Sort>(Sort.CODE);
+const useCurrencySort = (currencies: Currency[], initialValue = Sort.CODE) => {
+  const [sortBy, setSortBy] = useState<Sort>(initialValue);
 
   const [sortedCurrencies, setSortedCurrencies] = useState<Currency[]>([]);
 
